@@ -14,7 +14,7 @@ fn main() {
     let input_filename = &args[1];
 
     let mut buf = read_file(&input_filename);
-    let mut rc4 = Rc4::new(b"C2Pain".into());
+    let mut rc4 = Rc4::new(b"sufficientfiddle".into());
 
     rc4.apply_keystream(&mut buf);
 
@@ -26,7 +26,7 @@ fn main() {
 
     let modified_filename: String = filename_without_extension.chars().map(|c| format!("{}-", c)).collect();
 
-    let output_filename = format!("{}4.enc", modified_filename);
+    let output_filename = format!("{}4.rc4", modified_filename);
     write_file(&output_filename, &buf);
 
     println!("[+] Encrypted shellcode saved to: {}", output_filename);
